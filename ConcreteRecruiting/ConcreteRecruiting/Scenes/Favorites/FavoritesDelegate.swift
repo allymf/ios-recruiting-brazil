@@ -24,7 +24,7 @@ class FavoritesDelegate: NSObject, UITableViewDelegate {
     
     // TODO: Get this information from viewModel
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Unfavorite"
+        return self.viewModel.unfavoriteTitle
     }
     
 }
