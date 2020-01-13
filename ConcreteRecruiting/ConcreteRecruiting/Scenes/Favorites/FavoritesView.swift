@@ -50,15 +50,14 @@ class FavoritesView: UIView {
         self.backgroundColor = .systemGray6
         setupLayout()
         
-        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        self.tableViewDataSource = FavoritesDataSource()
+    func setup(with viewModel: FavoritesViewModel) {
+        self.tableViewDataSource = FavoritesDataSource(viewModel: viewModel)
         self.tableViewDelegate = FavoritesDelegate()
     }
     

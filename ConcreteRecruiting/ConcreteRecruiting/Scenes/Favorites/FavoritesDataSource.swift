@@ -13,6 +13,12 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     // TODO: Replace with viewModel
     var favorites = [Int].init(repeating: 10, count: 10)
     
+    let viewModel: FavoritesViewModel
+    
+    init(viewModel: FavoritesViewModel) {
+        self.viewModel = viewModel
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.favorites.count
     }

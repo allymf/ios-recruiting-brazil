@@ -28,7 +28,7 @@ class FavoritesViewController: UIViewController {
 
         let favoritesView = FavoritesView()
         self.view = favoritesView
-        favoritesView.setup(self.viewModel)
+        favoritesView.setup(with: self.viewModel)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Filter"), style: .plain, target: self, action: #selector(didTapFilter))
         
