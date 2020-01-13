@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: movieListVC)
         navigationController.navigationBar.applyDefaultStyle()
         
-        let favoritesVC = FavoritesViewController()
+        let favoritesVC = FavoritesViewController(viewModel: FavoritesViewModel(favoriteManager: PListFavoritesManager()))
         let favoriteNavigationController = UINavigationController(rootViewController: favoritesVC)
         favoriteNavigationController.navigationBar.applyDefaultStyle()
         
