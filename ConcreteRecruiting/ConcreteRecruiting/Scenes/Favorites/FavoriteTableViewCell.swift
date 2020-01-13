@@ -51,6 +51,23 @@ class FavoriteTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setup(with viewModel: MovieCellViewModel) {
+        
+        self.posterImageView.image = UIImage(data: viewModel.bannerData)
+        self.titleLabel.text = viewModel.movieTitle
+        self.yearLabel.text = viewModel.releaseYear
+        self.descriptionLabel.text = viewModel.description
+        
+        viewModel.didAcquireBannerData = { [weak self] (data) in
+            DispatchQueue.main.async {
+                self?.posterImageView.image = UIImage(data: data)
+            }
+        }
+        
+        viewModel.acquireBannerData()
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -62,7 +79,7 @@ class FavoriteTableViewCell: UITableViewCell {
 
 extension FavoriteTableViewCell {
     
-    func addViews() {
+    private func addViews() {
         self.contentView.addSubviews([
             posterImageView,
             titleLabel,
@@ -71,7 +88,7 @@ extension FavoriteTableViewCell {
         ])
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         
         addViews()
         
