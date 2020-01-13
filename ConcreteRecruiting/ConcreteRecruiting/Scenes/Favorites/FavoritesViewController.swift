@@ -16,6 +16,8 @@ class FavoritesViewController: UIViewController {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.title = viewModel.title
     }
     
     required init?(coder: NSCoder) {
