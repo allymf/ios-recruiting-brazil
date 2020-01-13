@@ -12,6 +12,12 @@ import UIKit
 
 class FavoritesDelegate: NSObject, UITableViewDelegate {
     
+    let viewModel: FavoritesViewModel
+    
+    init(viewModel: FavoritesViewModel) {
+        self.viewModel = viewModel
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }

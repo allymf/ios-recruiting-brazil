@@ -58,7 +58,7 @@ class FavoritesView: UIView {
     
     func setup(with viewModel: FavoritesViewModel) {
         self.tableViewDataSource = FavoritesDataSource(viewModel: viewModel)
-        self.tableViewDelegate = FavoritesDelegate()
+        self.tableViewDelegate = FavoritesDelegate(viewModel: viewModel)
     }
     
 }

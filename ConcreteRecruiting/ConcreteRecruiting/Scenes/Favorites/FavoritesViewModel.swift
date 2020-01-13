@@ -64,5 +64,4 @@ class FavoritesViewModel {
         viewModel.didTapFavorite()
     }
     
-    
 }
