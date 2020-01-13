@@ -10,9 +10,6 @@ import UIKit
 
 class FavoritesDataSource: NSObject, UITableViewDataSource {
     
-    // TODO: Replace with viewModel
-    var favorites = [Int].init(repeating: 10, count: 10)
-    
     let viewModel: FavoritesViewModel
     
     init(viewModel: FavoritesViewModel) {
@@ -20,7 +17,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favorites.count
+        return self.viewModel.numberOfFavorites
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,10 +26,9 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
             fatalError("Unable to dequeue a cell with the Cell Identifier")
         }
         
-        cell.posterImageView.image = UIImage(named: "Filter")
-        cell.titleLabel.text = "Thor"
-        cell.yearLabel.text = "2008"
-        cell.descriptionLabel.text = String.init(repeating: "Arroz ", count: 25)
+        let viewModel = self.viewModel.getViewModel(for: indexPath)
+        
+        cell.setup(with: viewModel)
         
         return cell
         
@@ -40,9 +36,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-        // TODO: Remove from favorites persistance
         if editingStyle == .delete {
-            self.favorites.remove(at: indexPath.row)
+            self.viewModel.removeFavorite(at: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
