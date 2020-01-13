@@ -34,6 +34,10 @@ class FavoritesViewModel {
         return "Remove Filter"
     }
     
+    var unfavoriteTitle: String {
+        return "Unfavorite"
+    }
+    
     var numberOfFavorites: Int {
         return self.movieViewModels.count
     }
